@@ -26,7 +26,7 @@ const Stats = ()=>{
             </div>
         </div>
         
-        <div className="lg:px-[50px] max-md:px-[20px] mb-10 md:px-5 lg:px-0 ">
+        <div className="lg:px-[50px] max-md:px-[20px] mb-10 md:px-5  ">
 
             <div className="grid grid-cols-7 gap-15">
                 <div>
