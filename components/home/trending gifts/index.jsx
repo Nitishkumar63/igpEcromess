@@ -26,7 +26,7 @@ const flower = [
 
 const TrendingGifts = () =>{
     return(
-        <div className="md:px-5 lg:px-0">
+        <div className="md:px-5  lg:px-[50px] max-md:px-[20px]">
 
         
         <h1 className="text-2xl font-semibold text-gray-700">Trending Gifts</h1>

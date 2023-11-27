@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const MarvelCarseal = () => {
   return (
-    <div>
+    <div className='lg:px-[30px] max-md:px-[20px]'>
       <div className="flex md:justify-center max-md: md:items-center md:gap-5 py-5 mt-5 mb-5">
         <Image
           src="/image/unique_gifts_igp_d_title (1).svg"

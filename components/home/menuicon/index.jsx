@@ -45,7 +45,7 @@ const icon = [
 const Menuicon = () => {
   return (
     
-      <div className="max-lg:px-3 max-md:px-0">
+      <div className="max-lg:px-3 max-md:px-0 lg:px-[50px] max-md:px-[20px]">
       <div className="border grid max-lg:grid-cols-4  max-lg:items-center max-md:py-3 lg:grid-cols-8 md:gap-[30px] lg:px-5  rounded-lg max-lg:py-2 lg:py-4 border-red-500 mb-5">
         {icon.map((item, index) => (
           <div

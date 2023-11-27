@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Pagination,Autoplay } from "swiper/modules";
 const Produtcarscel = () => {
   return (
-    <>
+    <div className='lg:px-[50px] max-md:px-[20px]'>
       <Swiper
         pagination={{
           dynamicBullets: true,
@@ -59,7 +59,7 @@ const Produtcarscel = () => {
           />
         </SwiperSlide>
       </Swiper>
-    </>
+    </div>
   );
 };
 

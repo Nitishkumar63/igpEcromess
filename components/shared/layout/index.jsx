@@ -166,7 +166,7 @@ const Layout = ({ children, title = "Page title ts empty" }) => {
         </div>
       </div>
 
-      <div className="lg:px-[50px] max-md:px-[20px] mt-[75px]"> {children}</div>
+      <div className=" mt-[75px]"> {children}</div>
 
       {/* footer coding */}
 

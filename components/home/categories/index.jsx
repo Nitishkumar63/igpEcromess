@@ -87,12 +87,12 @@ const col_four = [
 
 const Categories = ()=>{
     return(
-        <div>
+        <div className='lg:px-[50px] md:px-5 max-md:px-[20px]'>
         <div className='mb-5'>
         <h1 className="text-2xl font-semibold text-gray-700">Categories</h1>
         <span className="text-lg text-gray-500 mb-5 ">Wide range of gifts for your celebration</span>
         </div>
-          <div className='grid grid-cols-2 gap-5 mb-5'>
+          <div className='grid max-lg:grid-cols-1 lg:grid-cols-2 gap-5 mb-5'>
             {
                col_six.map((item,index)=>(
                 <div key={index} >
@@ -119,7 +119,7 @@ const Categories = ()=>{
             }
           </div>
 
-          <div className='grid grid-cols-3 gap-5 mb-5'>
+          <div className='grid  max-lg:grid-cols-1 lg:grid-cols-3 gap-5 mb-5'>
             {
                col_three.map((item,index)=>(
                 <div key={index} >
@@ -146,7 +146,7 @@ const Categories = ()=>{
             }
           </div>
 
-          <div className='grid grid-cols-3 gap-5 mb-20'>
+          <div className='grid max-lg:grid-rows-1 lg:grid-cols-3 gap-5 mb-20'>
             {
                col_four.map((item,index)=>(
                 <div key={index} >

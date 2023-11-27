@@ -5,15 +5,11 @@ import Image from "next/image"
 
 const CelebrateMilestones =()=>{
     return(
-        <div className="md:px-5 lg:px-0">
+        <div className="md:px-5 lg:px-0 lg:px-[50px] max-md:px-[20px]">
          <h1 className="text-2xl font-semibold text-gray-700">Celebrate Milestones</h1>
         <span className="text-lg text-gray-500 ">With our memorable gifts</span>
 
-            
-           
-
-
-
+        
             <div className="grid max-lg:grid-cols-1 lg:grid-cols-2 mt-5 gap-10 ">
               <div>
               <div className="border-b border-black flex justify-between mb-5">
