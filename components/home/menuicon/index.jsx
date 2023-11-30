@@ -1,13 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 const icon = [
   {
     iconname: "/image/w-tiles-SDD-v202306.png",
-    href: "#",
+    href: "/same-day-delivery-gifts",
     title: "Same Day Delivery",
   },
   {
     iconname: "/image/w-tiles-personalize-v202306.png",
-    href: "#",
+    href: "/personalized-gifts",
     title: "Personalized",
   },
   {
@@ -45,7 +46,7 @@ const icon = [
 const Menuicon = () => {
   return (
     
-      <div className="max-lg:px-3 max-md:px-0 lg:px-[50px] max-md:px-[20px]">
+      <div className="max-lg:px-3  lg:px-[50px] max-md:px-[20px]">
       <div className="border grid max-lg:grid-cols-4  max-lg:items-center max-md:py-3 lg:grid-cols-8 md:gap-[30px] lg:px-5  rounded-lg max-lg:py-2 lg:py-4 border-red-500 mb-5">
         {icon.map((item, index) => (
           <div
@@ -54,12 +55,12 @@ const Menuicon = () => {
               index !== icon.length - 1 ? "border-r lg:pr-5  lg:gap-5" : null
             } gap-5 border-red-500`}
           >
-            <div className=" cursor-pointer items-center">
+            <Link href={item.href} className=" cursor-pointer items-center">
               <div className="flex justify-center mb-1">
                 <Image src={item.iconname} width={40} height={40} alt="icon" />
               </div>
               <h1 className="lg:text-sm max-lg:text-xs text-center ">{item.title}</h1>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

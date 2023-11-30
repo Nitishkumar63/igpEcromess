@@ -1,29 +1,88 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
-import { Button } from "antd";
 import Link from "next/link";
+import {  Tooltip,Dropdown,Menu,Button,Tree,Popover,Form,  Cascader, TreeSelect,  } from 'antd';
+
 
 const menuicon = [
   {
     path: "/image/reminder-icon.svg",
-    href: "#",
+    href: "/remember",
+    title:'Remember',
+    dropdow:false
   },
   {
     path: "/image/rupees-logo-new.svg",
-    href: "#",
+    href: "#",  
+    title:'Currency',
+    dropdow:true,
+    dropdownItems: [
+      { 
+        key: '1',
+        label: 'INR',
+        path:'/image/IND-Flag.svg',
+      },
+      { 
+      key: '2', 
+      label: 'USD',
+      path:'/image/US-Flag.svg',
+    },
+    { 
+      key: '3', 
+      label: 'CAD',
+      path:'/image/CAD-Flag.svg',
+    },
+    { 
+      key: '4', 
+      label: 'GBP',
+      path:'/image/UK-Flag (1).svg',
+    },
+    { 
+      key: '5', 
+      label: 'AED',
+      path:'/image/Flag-UAE (1).svg',
+    },
+    { 
+      key: '6', 
+      label: 'AUD',
+      path:'/image/Flag-AUS (1).svg',
+    },
+    { 
+      key: '7', 
+      label: 'NZD',
+      path:'/image/Flag-NZ (1).svg',
+    },
+    { 
+      key: '8', 
+      label: 'SGD',
+      path:'/image/Flag-Singapore (1).svg',
+    },
+    { 
+      key: '9', 
+      label: 'EUR',
+      path:'/image/Flag-Europe (1).svg', 
+    },
+    ]
+    
   },
   {
     path: "/image/shortlist-new.svg",
-    href: "#",
+    href: "/shortlist",
+    title:'Shortlist',
+    dropdow:false
   },
   {
     path: "/image/cart-new.svg",
-    href: "#",
+    href: "/cart",
+    title:'Cart',
+    dropdow:false
   },
   {
     path: "/image/user-logo-new.svg",
-    href: "#",
+    href: "/login",
+    title:'Account',
+    dropdow:false
   },
 ];
 
@@ -116,19 +175,103 @@ const footerimage = [
   },
 ];
 
-const Layout = ({ children, title = "Page title ts empty" }) => {
+
+const menus = [
+  {
+    lable:'Same Day Delivery Gifts'
+  },
+  {
+    lable:'Delivery Gifts'
+  },
+  {
+    lable:'Personalized Gifts'
+  },
+  
+]
+
+
+
+
+
+
+const Layout = ({ children, title = "",description="" ,keywords=""}) => {
   const [placeholder, setPlaceholder] = useState("Serech for gifts");
+  const [open, setOpen] = useState(false);
+
+  const hide = () => {
+    setOpen(false);
+  };
+
+  const handleOpenChange = (boolean) => {
+    setOpen(boolean);
+  };
+
   //menu coding
   return (
-    <div>
+    <>
       <Head>
         <link rel='icon' href='/image/unnamed.png' />
-        <title>{title}</title>
+            <title>{title } - {process.env.NEXT_PUBLIC_DOMAIN}</title>
+            <meta name="description" content={description}/>
+            <meta name="keywords" content={keywords}/>
+            <meta name="robots" content="index,follow"/>
+            <meta property="og:title" content={process.env.NEXT_PUBLIC_BRAND_NAME}/>
+            <meta property="og:description" content={description}/>
+            <meta property="og:image" content={process.env.NEXT_PUBLIC_BRAND_LOGO}/>
+            <meta property="og:url" content="website"/>
       </Head>
       <div className=" border-b z-10 bg-[#FFFFFF] max-md:px-[20px] md:px-[50px] w-full fixed top-0 left-0 right-0">
         <div className=" flex items-center justify-between">
           <div className="flex md:gap-1 items-center cursor-pointer">
-            <i className="bx bx-menu-alt-left text-3xl"></i>
+         
+
+
+            <Popover
+      content={
+        <div className=" w-[280px] h-[504px] ">
+          <div className="border-2 w-[275px] mb-4 h-[170px] rounded-xl " >
+            <div className='flex justify-between px-5 py-2 items-center'>
+              <h1 className='font-semibold text-lg'>Top Collections</h1>
+              <Image src='/image/catTree-col-desktop.svg' width={40} height={40} alt='logo' />
+            </div>
+            {
+              menus.map((item,index)=>(
+                <div key={index} className="flex px-5">
+                  <Link href='#' className='mb-3 font-semibold'>{item.lable}</Link>
+                </div>
+              ))
+            }
+          
+          </div>
+          <div className='border-b pb-4'>
+          <h1 className='font-semibold text-xs'>Shop By:</h1>
+          </div>
+          
+          <div>
+          <Form.Item label="Cascader">
+        <Cascader
+          options={[
+            {
+              value: 'zhejiang',
+              label: 'Zhejiang',
+              children: [{ value: 'hangzhou', label: 'Hangzhou' }],
+            },
+          ]}
+        />
+      </Form.Item>
+          </div>
+          
+        </div>
+      }
+      
+      trigger="click"
+      open={open}
+      onOpenChange={handleOpenChange}
+    >
+     <i className="bx bx-menu-alt-left text-3xl"></i>
+    </Popover>
+
+
             <Image
               src="/image/igp-logo-revamp.png"
               width={69}
@@ -151,16 +294,55 @@ const Layout = ({ children, title = "Page title ts empty" }) => {
             <div className="lg:hidden flex items-center">
               <i className="bx text-2xl bx-search cursor-pointer  "></i>
             </div>
-            {menuicon.map((item, index) => (
-              <div key={index}>
-                <Image
-                  src={item.path}
-                  width={24}
-                  height={24}
-                  alt="icon"
-                  className="cursor-pointer"
-                />
-              </div>
+            {
+            menuicon.map((item, index) => (
+          <Link href={item.href} key={index}>
+          <Tooltip placement="bottom" title={item.title}>
+          {item.dropdow ? (
+          <Dropdown 
+          overlay={
+            <Menu  >
+              {item.dropdownItems.map((menuItem) => (
+                <Menu.Item key={menuItem.key}>
+                  <div className="cursor-pointer flex justify-between gap-3 items-center mb-2">
+                  <Image
+                    src={menuItem.path}
+                    width={24}
+                    height={24}
+                    alt="icon"
+                   
+                  />
+                  {menuItem.label}
+                  </div>
+                </Menu.Item>
+              ))}
+            </Menu>
+          }
+          trigger={['click']}  arrow>
+            <button>
+              
+              <Image
+                src={item.path}
+                width={24}
+                height={24}
+                alt="icon"
+                className="cursor-pointer"
+              />
+            </button>
+          </Dropdown>
+        ) : (
+          <button>
+            <Image
+              src={item.path}
+              width={24}
+              height={24}
+              alt="icon"
+              className="cursor-pointer"
+            />
+          </button>
+        )}
+                </Tooltip>
+              </Link>
             ))}
           </div>
         </div>
@@ -354,7 +536,7 @@ const Layout = ({ children, title = "Page title ts empty" }) => {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Layout;

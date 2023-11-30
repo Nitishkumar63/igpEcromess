@@ -5,6 +5,55 @@ import "swiper/css/pagination";
 
 import Image from "next/image";
 
+const menus = [
+  {
+    path:'/image/birthday_igp_lenses_20230627.webp',
+    title:'Birthday Gifts'
+  },
+  {
+    path:'/image/anniversary_igp_lenses_20230627 (1).jpg',
+    title:'Anniversary Gifts'
+  },
+  {
+    path:'/image/wedding_gifts_igp_lenses_20230627.webp',
+    title:'Wedding Gifts'
+  },
+  {
+    path:'/image/gourmet_igp_lenses_20230627.webp',
+    title:'Gourment'
+  },
+  {
+    path:'/image/fashion_living_igp_lenses_20230627.webp',
+    title:'Fashion & Lifestyle'
+  },
+  {
+    path:'/image/jewellery_igp_lenses_20230627.webp',
+    title:'Jewellery'
+  },
+  {
+    path:'/image/home_living_igp_lenses_20230627.webp',
+    title:'Home & Living'
+  },
+  {
+    path:'/image/new_arrival_igp_lenses_20230627.webp',
+    title:'New Arrivals'
+  },
+  {
+    path:'/image/international_igp_lenses_20230118.webp',
+    title:'International'
+  },
+  {
+    path:'/image/disney_igp_polaroid_20230630.webp',
+    title:'Disney Collenction'
+  },
+  {
+    path:'/image/marvel_igp_polaroid_20230630.webp',
+    title:'Mervel Collenction'
+  },
+  
+]
+
+
 const MarvelCarseal = () => {
   return (
     <div className='lg:px-[30px] max-md:px-[20px]'>
@@ -33,143 +82,25 @@ const MarvelCarseal = () => {
         }}
         className="mySwiper mb-[50px] "
       >
-        <SwiperSlide >
-          <div className=" max-md:w-[50px] ">
-            <Image
-              src="/image/birthday_igp_lenses_20230627.webp"
-              alt="birthday"
-              width="180"
-              height="180"
-              className="cursor-pointer"
-            />
-            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center ">Birthday Gifts</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className=" max-md:w-[50px] ">
-            <Image
-              src="/image/anniversary_igp_lenses_20230627 (1).jpg"
-              alt="birthday"
-              width="180"
-              height="180"
-              className="cursor-pointer"
-            />
-            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center">Anniversary Gifts</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className=" max-md:w-[50px] ">
-            <Image
-              src="/image/wedding_gifts_igp_lenses_20230627.webp"
-              alt="birthday"
-              width="180"
-              height="180"
-              className="cursor-pointer"
-            />
-            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center">Wedding Gifts</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className=" max-md:w-[50px] ">
-            <Image
-              src="/image/gourmet_igp_lenses_20230627.webp"
-              alt="birthday"
-              width="180"
-              height="180"
-              className="cursor-pointer"
-            />
-            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center ">Gourment</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex flex-col max-md:w-[50px] ">
-            <Image
-              src="/image/fashion_living_igp_lenses_20230627.webp"
-              alt="birthday"
-              width="180"
-              height="180"
-              className="cursor-pointer"
-            />
-            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center">Fashion & Lifestyle</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex flex-col max-md:w-[50px] ">
-            <Image
-              src="/image/jewellery_igp_lenses_20230627.webp"
-              alt="birthday"
-              width="180"
-              height="180"
-              className="cursor-pointer"
-            />
-            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center ">Jewellery</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex flex-col max-md:w-[50px] ">
-            <Image
-              src="/image/home_living_igp_lenses_20230627.webp"
-              alt="birthday"
-              width="180"
-              height="180"
-              className="cursor-pointer"
-            />
-            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center ">Home & Living</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex flex-col max-md:w-[50px] ">
-            <Image
-              src="/image/new_arrival_igp_lenses_20230627.webp"
-              alt="birthday"
-              width="180"
-              height="180"
-              className="cursor-pointer"
-            />
-            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center">New Arrivals</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <div className="flex flex-col max-md:w-[50px] ">
-            <Image
-              src="/image/international_igp_lenses_20230118.webp"
-              alt="birthday"
-              width="180"
-              height="180"
-              className="cursor-pointer"
-            />
-            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center ">International</h1>
-          </div>
-        </SwiperSlide>
 
-        <SwiperSlide>
-          {" "}
-          <div className="flex flex-col max-md:w-[50px] ">
+        {
+          menus.map((item,index)=>(
+            <SwiperSlide key={index}>
+            <div  className="flex flex-col max-md:w-[50px] ">
             <Image
-              src="/image/disney_igp_polaroid_20230630.webp"
-              alt="birthday"
+              src={item.path}
+              alt={item.title}
               width="180"
               height="180"
               className="cursor-pointer"
             />
-            <h1 className="md:text-lg mt-3 max-md:text-xs text-center">Disney Collenction</h1>
+            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center ">{item.title}</h1>
           </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          {" "}
-          <div className="flex flex-col max-md:w-[50px] ">
-            <Image
-              src="/image/marvel_igp_polaroid_20230630.webp"
-              alt="birthday"
-              width="180"
-              height="180"
-              className="cursor-pointer"
-            />
-            <h1 className=" md:text-lg mt-3 max-md:text-xs text-center ">Mervel Collenction</h1>
-          </div>
-        </SwiperSlide>
+          </SwiperSlide>
+          ))
+          
+        }
+     
       </Swiper>
     </div>
   );

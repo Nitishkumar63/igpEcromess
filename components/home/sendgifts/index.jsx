@@ -47,7 +47,7 @@ const lang = [
 
 const SendGifts = () =>{
     return(
-        <div className='lg:px-[50px] max-md:px-[20px] md:px-5'>
+        <div className='lg:px-[50px] max-md:px-[20px] md:px-5 mb-20'>
         <div className="mb-5 max-lg:px-5 max-md:px-0  ">
         <h1 className="text-2xl font-semibold text-gray-700">Send Gifts World Wide</h1>
         <span className="text-lg text-gray-500 ">A gift to every part of the world</span>

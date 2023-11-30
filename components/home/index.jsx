@@ -18,7 +18,11 @@ import Stats from './stats'
 const Home = () =>{
   
     return(
-        <Layout title="IGP:Online Gifts Delivery,Buy/Sell">
+        <Layout 
+            title="IGP:Online Gifts Delivery,Buy/Sell"
+            description = "i am description"
+            keywords = 'testing keywords'
+         >
             <Menuicon/>
             <Produtcarscel/>
             <MarvelCarseal/>

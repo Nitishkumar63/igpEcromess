@@ -6,6 +6,20 @@ import "swiper/css/pagination";
 import Image from "next/image";
 // import required modules
 import { Pagination,Autoplay } from "swiper/modules";
+
+const ProductIamge = [
+  {
+    path:"/image/birthday_d_igp_banner_20230626.jpg",
+  },
+  {
+    path:"/image/anniversary_d_igp_banner_20230626.jpg",
+  },
+  {
+    path:"/image/flowers_d_igp_banner_20230626.jpg",
+  },
+]
+
+
 const Produtcarscel = () => {
   return (
     <div className='lg:px-[50px] max-md:px-[20px]'>
@@ -21,43 +35,20 @@ const Produtcarscel = () => {
         modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
+        {
+          ProductIamge.map((item,index)=>(
+            <SwiperSlide key={index}>
           <Image
-            src="/image/birthday_d_igp_banner_20230626.jpg"
+            src={item.path}
             alt="slider image"
             width="1440"
             height="554"
             className="w-full cursor-pointer"
           />
         </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            src="/image/anniversary_d_igp_banner_20230626.jpg"
-            alt="slider image"
-            width="1440"
-            height="554"
-            className="w-full  cursor-pointer"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            src="/image/cakes_d_igp_banner_20230626.jpg"
-            alt="slider image"
-            width="1440"
-            height="554"
-            className="w-full cursor-pointer"
-          />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <Image
-            src="/image/flowers_d_igp_banner_20230626.jpg"
-            alt="slider image"
-            width="1440"
-            height="554"
-            className="w-full cursor-pointer"
-          />
-        </SwiperSlide>
+          ))
+        }
+     
       </Swiper>
     </div>
   );
