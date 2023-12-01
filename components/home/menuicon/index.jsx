@@ -3,12 +3,12 @@ import Link from "next/link";
 const icon = [
   {
     iconname: "/image/w-tiles-SDD-v202306.png",
-    href: "/same-day-delivery-gifts",
+    href: "#",
     title: "Same Day Delivery",
   },
   {
     iconname: "/image/w-tiles-personalize-v202306.png",
-    href: "/personalized-gifts",
+    href: "#",
     title: "Personalized",
   },
   {
@@ -55,7 +55,7 @@ const Menuicon = () => {
               index !== icon.length - 1 ? "border-r lg:pr-5  lg:gap-5" : null
             } gap-5 border-red-500`}
           >
-            <Link href={item.href} className=" cursor-pointer items-center">
+            <Link href={'/product/'+item.title.toLowerCase().split(" ").join("-")} className=" cursor-pointer items-center">
               <div className="flex justify-center mb-1">
                 <Image src={item.iconname} width={40} height={40} alt="icon" />
               </div>

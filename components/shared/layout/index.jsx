@@ -220,7 +220,7 @@ const Layout = ({ children, title = "",description="" ,keywords=""}) => {
             <meta property="og:image" content={process.env.NEXT_PUBLIC_BRAND_LOGO}/>
             <meta property="og:url" content="website"/>
       </Head>
-      <div className=" border-b z-10 bg-[#FFFFFF] max-md:px-[20px] md:px-[50px] w-full fixed top-0 left-0 right-0">
+      <div className=" border-b z-10 bg-[#FFFFFF]  bg- max-md:px-[20px]  md:px-[50px] w-full fixed top-0 left-0 right-0">
         <div className=" flex items-center justify-between">
           <div className="flex md:gap-1 items-center cursor-pointer">
          
@@ -290,7 +290,7 @@ const Layout = ({ children, title = "",description="" ,keywords=""}) => {
             <i className="bx text-2xl bx-search cursor-pointer hidden"></i>
           </div>
 
-          <div className="items-center flex max-md:gap-3 md:gap-5">
+          <div className="items-center flex max-md:gap-x-3 md:gap-x-5">
             <div className="lg:hidden flex items-center">
               <i className="bx text-2xl bx-search cursor-pointer  "></i>
             </div>
@@ -304,7 +304,7 @@ const Layout = ({ children, title = "",description="" ,keywords=""}) => {
             <Menu  >
               {item.dropdownItems.map((menuItem) => (
                 <Menu.Item key={menuItem.key}>
-                  <div className="cursor-pointer flex justify-between gap-3 items-center mb-2">
+                  <div className="cursor-pointer flex justify-between gap-x-3 items-center">
                   <Image
                     src={menuItem.path}
                     width={24}

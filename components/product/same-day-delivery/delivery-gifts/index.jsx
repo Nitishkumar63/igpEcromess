@@ -1,6 +1,7 @@
 import { Breadcrumb ,Button,Select} from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const Category = [
     {
         title:'Cakes',
@@ -52,7 +53,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-adorable-birthday-pink-floral-arrangement-203947-m.webp',
@@ -60,7 +62,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-wholesome-treats-gourmet-hamper-263666-m.jpg',
@@ -68,7 +71,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-birthday-sprinkles-personalized-magic-mug-19292-m.webp',
@@ -76,7 +80,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-pastel-delight-hamper-223308-m.webp',
@@ -84,7 +89,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-cool-dude-personalized-caricature-117913-m.webp',
@@ -92,7 +98,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-work-in-progress-personalized-stainless-steel-mug-yellow-262981-m.webp',
@@ -100,7 +107,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-smiling-splendor-personalized-birthday-hamper-264759-m.webp',
@@ -108,7 +116,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-delicious-truffle-cake-half-kg--145982-m.webp',
@@ -116,7 +125,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-3d-initial-and-name-penstand-263442-m.webp',
@@ -124,7 +134,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-elegant-rose-bouquet-139330-m.jpg',
@@ -132,7 +143,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-protective-evil-eye-hamper-personalized-263352-m.webp',
@@ -140,7 +152,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-delicious-kaju-katli-400-gm--101059-m.webp',
@@ -148,7 +161,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-magic-cuppa-personalized-mug-186583-m.webp',
@@ -156,7 +170,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       dis:'445',
-      per:'Personalizable'
+      per:'Personalizable',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-zen-oasis-2-layer-bamboo-plant-with-pot-personalized-240950-m.webp',
@@ -164,7 +179,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
     {
       path:'/image/p-hues-of-savories-263825-m.webp',
@@ -172,7 +188,8 @@ const categorymenu = [
       price:'325',
       icon:'bx bxs-star',
       per:'Personalizable',
-      dis:'445'
+      dis:'445',
+      href:'/add-to-cart'
     },
   ]
 
@@ -201,12 +218,13 @@ const categorymenu = [
 
 
 const SameGifts = () => {
+  const router = useRouter();
   return (
     <>
-    <div className="px-[50px]">
+    <div className="px-[50px] mt-[120px]">
       <div className='flex justify-between mb-5'>
         <div>
-          <Breadcrumb className='mb-5'
+          <Breadcrumb className='mb-5 capitalize'
             separator=">"
             items={[
               {
@@ -214,12 +232,12 @@ const SameGifts = () => {
                 href: "",
               },
               {
-                title: "Same Day Delivery Gifts",
+                title: `${router.query.slug && router.query.slug.split("-").join("-")}`,
                 href: "",
               },
             ]}
           />
-          <h1 className="text-4xl font-medium flex gap-x-5 items-center">Same Day Delivery Gifts  <span className="text-xl font-bold text-gray-400">2142 Items</span></h1>
+          <h1 className="text-4xl font-medium flex gap-x-5 items-center capitalize">  {router.query.slug && router.query.slug.split("-").join("-")}-Gifts <span className="text-xl font-bold text-gray-400">2142 Items</span></h1>
         </div>
         <div>
             <div className='mb-2 float-right'>
@@ -280,6 +298,7 @@ const SameGifts = () => {
             categorymenu.map((item,index)=>(
               <div  key={index} >
               <div className="border border-gray-300 rounded-xl">
+              <Link href={item.href}>
               <Image
                 src={item.path}
                 className="rounded-t-xl mb-3 cursor-pointer"
@@ -287,12 +306,11 @@ const SameGifts = () => {
                 height={349}
                 alt="productimage"
               />
-              <Link
-                href="#"
+              <h1
                 className="text-sm px-3 font-semibold cursor-pointer"
               >
                 {item.title}
-              </Link>
+              </h1>
               <div className="flex gap-2 mt-2 px-5 ">
                 <Link href="#" className="text-lg ">
                 
@@ -307,15 +325,17 @@ const SameGifts = () => {
                   ({item.dis}) {item.per}
                 </Link>
               </div>
+              </Link>
             </div>
+            
             </div>
             ))
           }
-        </div>
+  </div>
 
-        <div className="flex justify-center mb-10">
+       <div className="flex justify-center mb-10">
           <Button className="bg-[#E03C57] w-[550px] text-lg h-[60px] font-semibold text-white">SHOW MORE PRODUCT (2028) </Button>
-        </div>
+        </div> 
 
     </div>
     <div className="w-full py-2 bg-gray-100 mb-5"></div>
