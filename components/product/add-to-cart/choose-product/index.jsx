@@ -2,11 +2,13 @@ import { Breadcrumb ,Button, Form,Collapse,Tabs, Input,Select, Rate} from "antd"
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { useState ,useEffect} from "react";
 const productcarceal = [
   {
     path:'/image/p-elegant-rose-bouquet-139330-m.jpg',
@@ -156,18 +158,95 @@ const onChange = (strings) => {
     },
   ];
 
+  const user = [
+    {
+      rate : 4,
+      name : 'Nitish',
+      address:'.Bengaluru . 29-11-2023',
+      date : 'Nov 2 2023',
+      desc : 'mmodi perspiciatis unde omnis iste natus aliquam sit voluptatem exercitationem doloremque laudantium.'
+    },
+    {
+      rate : 3,
+      name : 'Nitish',
+      date : 'Nov 2 2023',
+      address:'.Bengaluru . 29-11-2023',
+      desc : 'mmodi perspiciatis unde omnis iste natus aliquam sit voluptatem exercitationem doloremque laudantium.'
+    },
+    {
+      rate : 4.5,
+      name : 'Nitish',
+      date : 'Nov 2 2023',
+      address:'.Bengaluru . 29-11-2023',
+      desc : 'mmodi perspiciatis unde omnis iste natus aliquam sit voluptatem exercitationem doloremque laudantium.'
+    },
+  
+  ]
+
+
+
+const colitems = [
+  {
+    key: '1',
+    label: 'Get Flat 10% off, for first time users',
+    children: <ul><li className='font-semibold'>Terms & conditions</li><li></li></ul>,
+  },
+  {
+    key: '2',
+    label: 'Get Flat 15% Cashback, Use Code LOYAL',
+    children: <ul><li className='font-semibold'>Terms & conditions</li><li></li></ul>,
+  },
+  {
+    key: '3',
+    label: 'Get assured 5% cashback upto INR 750 on using Simpl',
+    children: <ul><li className='font-semibold'>Terms & conditions</li><li></li></ul>,
+  },
+  {
+    key: '4',
+    label: 'Get assured 5% cashback upto INR 750 on using Simpl',
+    children: <ul><li className='font-semibold'>Terms & conditions</li><li></li></ul>,
+  },
+  {
+    key: '',
+    label: 'Get assured 5% cashback upto INR 750 on using Simpl',
+    children: <ul><li className='font-semibold'>Terms & conditions</li><li></li></ul>,
+  },
+ 
+];
+
+
+
+
 
 
 
 const Choose = () =>{
 
+  const [dataFixed,setDatafixed]= useState('fixed');
     const onChange = ( string ) => {
         console.log(string );
       };
 
+      useEffect(()=>{
+        window.onscroll = () => {
+          const height = Math.floor(window.scrollY);
+          const dHeight = window.innerHeight
+          
+          if (height > 1350 ) {
+            setDatafixed('relative');
+          } 
+          else{
+            setDatafixed('fixed');
+          }
+        }  
+      },[])
+    
+
     return(
         <div className="px-[50px]">
             <div className="grid grid-cols-2 ">
+                <div>
+                <div className={`{ ${dataFixed} }`}>
                 <div className='flex  gap-8 '>
                     <div className='flex flex-col mt-[200px]'>
                     {
@@ -202,6 +281,8 @@ const Choose = () =>{
   />
                     <Image src='/image/p-choco-chip-truffle-cake-300-gm--265855-m.webp' width={568} height={568} alt='flower'/>
                     </div>
+                </div>
+                </div>
                 </div>
                 <div>
                     <div className="flex justify-between items-center mt-5 border-b  pb-5">
@@ -303,7 +384,7 @@ placeholder='PinCode/Location'
                   </div>
 
 
-                  <div>
+                  <div className='border-b pb-1 mb-5'>
       
       <Swiper
         slidesPerView={5}
@@ -315,7 +396,7 @@ placeholder='PinCode/Location'
         navigation={true}
         loop={true}
         modules={[Navigation]}
-        className="mySwiper  gap-2"
+        className="mySwiper  gap-2 mb-5"
       >
       
       {
@@ -365,7 +446,54 @@ placeholder='PinCode/Location'
 
 
 
+        <div className='border-b pb-5 mb-5'>
+          <h1 className='font-semibold mb-3 text-lg px-5'>Offers</h1>
+        <Collapse 
+        className='bg-white'
+        items={colitems} expandIconPosition='end'  style={{ borderRadius: "0" }}  defaultActiveKey={['1']} onChange={onChange} />
+        </div>
 
+   
+<div>
+<div className=" text-lg font-semibold text-black">
+        Reviews<span>(32)</span>
+  </div>
+  <div className="flex flex-col gap-y-4 "> 
+      {
+      user.map((item,index)=>(
+        <div className="flex items-start gap-3 mb-3 mt-5 " key={index}>
+        <button>
+        <i className='bx bxs-user-circle text-6xl text-gray-300' ></i>
+        </button>
+        <div className="flex flex-col gap-y-2">
+          <div className="flex flex-col">
+            <Rate defaultValue={item.rate} allowHalf className="text-sm text-[#FCC419]"  />
+           <div className='gap-x-3'>
+            <span className="text-gray-400 capitalize">{item.name} {item.address}</span>
+            <span className="text-gray-400"> {item.date}</span>
+           </div> 
+          </div>
+          <h1 className="text-lg text-gray-600 max-md:text-xs">{item.desc}</h1>
+        </div>
+      </div>
+      ))
+     }
+     <div className='flex justify-center mb-4'>
+     <Button className='text-lg font-semibold border-0 hover:scale-110'>Load More</Button>
+     </div>
+     
+     <div className='flex justify-between gap-3 '>
+      <Button className='bg-white font-semibold  w-[350px] h-[50px]' style={{ borderRadius: "0" }} >MAKE IT EXTRA SPECIAL</Button>
+      <div>
+      <Button className=' flex justify-center items-center gap-2 h-[50px] text-white font-semibold bg-red-500 w-[350px] ' style={{ borderRadius: "0" }} >
+        ADD TO 
+        <Image src='/image/cart-white.svg'  width={24} height={24} alt='cart'/>
+      </Button>
+      </div>
+     </div>
+
+      </div>
+</div>
 
 
 

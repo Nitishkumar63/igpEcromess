@@ -47,7 +47,7 @@ const Categorymenu = () =>{
                 menus.map((item,index)=>(
                     <div key={index} >
                     
-  <Select onClick={()=>setOpen(true)} className="h-10 bg-slate-100 hover:bg-slate-200 "  bordered={false}  open={false} defaultValue={item.lable} onChange={handleChange} style={{ borderRadius: "0" }} />
+  <Select onClick={()=>setOpen(true)}  className="h-10 bg-slate-100 hover:bg-slate-200 "  bordered={false}  open={false} defaultValue={item.lable} onChange={handleChange} style={{ borderRadius: "0" }} />
 
    
                     </div>

@@ -5,6 +5,7 @@ const Remember = () =>{
         <>
        <Layout title="igp.com/remember" description="Never miss loved ones' special days with timely prompts, tailor-made offers & personalised gifts" keywords="Add a Reminder">
         <AddRember/>
+        
        </Layout>
         </>
     )
