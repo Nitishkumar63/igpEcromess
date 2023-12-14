@@ -1,46 +1,47 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button, Form, DatePicker, Space, Input, Select, message } from "antd";
+import { Button, Form, DatePicker, InputNumber, Input, message } from "antd";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
-axios.defaults.baseURL = 'http://localhost:8080/'
-
-
-
+axios.defaults.baseURL = "http://localhost:8080/";
 
 const Logindata = () => {
   const [login, SetLogin] = useState("block");
   const [hiddenSingup, SetSingup] = useState("hidden");
-  const [form] = Form.useForm();
-  const [SetLoginBlock, SetSignup] = useState("block");
+  const [formLogin] = Form.useForm();
+  const [formSingup] = Form.useForm();
 
+  const router = useRouter();
 
   const onFinish = async (values) => {
-    console.log(values);
-  };
-  
- 
-  
-  const Singup = async (values) => {
     try {
-       await axios.post('/auth/signup',values)
-       message.success('Singup Success')
+      await axios.post("/auth/login", values);
+      router.push("/");
+      message.success("Login Success");
     } catch (error) {
-      message.success(error.message)
-    } finally{
-      form.resetFields();
+      message.success(error.message);
+    } finally {
+      formLogin.resetFields();
     }
   };
 
+  const Singup = async (values) => {
+    try {
+      await axios.post("/auth/signup", values);
+      router.push("/");
+      message.success("Singup Success");
+    } catch (error) {
+      message.success(error.message);
+    } finally {
+      formSingup.resetFields();
+    }
+  };
 
-
-  
   return (
     <>
       {/*login coding */}
       <div className={login}>
-       
-            
         <div className="flex justify-center relative">
           <div className="-z-2 absolute ">
             <Image
@@ -48,7 +49,7 @@ const Logindata = () => {
               width={1366}
               height={565}
               alt="logo"
-              className="  flex justify-center -z-5 items-center"
+              className="flex justify-center -z-5 items-center"
             />
           </div>
           <div className="shadow-xl w-[550px]  py-10 h-[640px] px-[30px] z-10 bg-white">
@@ -59,51 +60,51 @@ const Logindata = () => {
                 onClick={() => {
                   SetSingup("block"), SetLogin("hidden");
                 }}
-                className="text-lg cursor-pointer text-blue-500 "
+                className="text-lg cursor-pointer text-blue-500"
               >
                 Signup
               </span>
             </h1>
 
-            <Form onFinish={onFinish} form={form} layout="vertical" autoComplete="off">
-             
-
-
-             <Form.Item
-                label="Email Id"
-                name="useremail"
+            <Form
+              onFinish={onFinish}
+              form={formLogin}
+              layout="vertical"
+              autoComplete="off"
+            >
+              <Form.Item
+                label="Email"
+                name="email"
                 className="font-semibold text-lg"
                 rules={[
-                  { required: true, message: "Please input your Country!" },
+                  { required: true, message: "Please input your Email!" },
+                  {
+                    type: "email",
+                    message: "Please enter a valid email address",
+                  },
                 ]}
               >
                 <Input
                   className="py-2 h-[44px] w-[485px]"
-                  placeholder="Enter Country"
+                  placeholder="Enter Email"
                   style={{ borderRadius: "0" }}
                 />
               </Form.Item>
 
-
-              
               <Form.Item
                 label="Password"
-                name="userpassword"
+                name="password"
                 className="font-semibold text-lg"
                 rules={[
-                  { required: true, message: "Please input your Country!" },
+                  { required: true, message: "Please input your Password!" },
                 ]}
               >
-                <Input
+                <Input.Password
                   className="py-2 h-[44px] w-[485px]"
-                  placeholder="Enter Country"
+                  placeholder="Enter Password"
                   style={{ borderRadius: "0" }}
                 />
               </Form.Item>
-
-
-
-              
 
               <Form.Item>
                 <Button
@@ -161,15 +162,12 @@ const Logindata = () => {
                 </Form.Item>
               </div>
             </Form>
-
           </div>
         </div>
-
       </div>
 
       {/*singup coding */}
       <div className={hiddenSingup}>
-        
         <div className="flex justify-center relative">
           <div className="-z-2 absolute ">
             <Image
@@ -183,7 +181,7 @@ const Logindata = () => {
           <div className="shadow-xl w-[550px]  py-10 h-[1100px] px-[30px] z-10 bg-white">
             <h1 className="text-2xl mb-5 font-semibold">Sign Up</h1>
             <h1 className="mb-7 font-semibold ">
-              Already have an account ?{" "}
+              Already have an account ?
               <span
                 onClick={() => {
                   SetLogin("block"), SetSingup("hidden");
@@ -194,7 +192,12 @@ const Logindata = () => {
               </span>{" "}
             </h1>
 
-            <Form  form={form} onFinish={Singup} layout="vertical" autoComplete="off">
+            <Form
+              form={formSingup}
+              onFinish={Singup}
+              layout="vertical"
+              autoComplete="off"
+            >
               <Form.Item
                 label="Full Name"
                 name="fullname"
@@ -206,6 +209,7 @@ const Logindata = () => {
                 <Input
                   className="py-2 h-[44px] w-[485px]"
                   style={{ borderRadius: "0" }}
+                  placeholder="Enter Full Name"
                 />
               </Form.Item>
 
@@ -232,23 +236,28 @@ const Logindata = () => {
                   { required: true, message: "Please input your Mobile !" },
                 ]}
               >
-                <Input
+                <InputNumber
                   className="py-2 h-[44px] w-[485px]"
                   style={{ borderRadius: "0" }}
+                  placeholder="Enter Mobile Number"
                 />
               </Form.Item>
 
               <Form.Item
-                label="Email Id"
+                label="Email"
                 name="email"
                 className="font-semibold text-lg"
                 rules={[
-                  { required: true, message: "Please input your Email !" },
+                  { required: true, message: "Please input your Email!" },
+                  {
+                    type: "email",
+                    message: "Please enter a valid email address",
+                  },
                 ]}
               >
                 <Input
                   className="py-2 h-[44px] w-[485px]"
-                  placeholder="Enter Email Id"
+                  placeholder="Enter Email"
                   style={{ borderRadius: "0" }}
                 />
               </Form.Item>
@@ -342,8 +351,6 @@ const Logindata = () => {
             </Form>
           </div>
         </div>
-
-        
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import Logindata from './logindata'
 const Login = () =>{
   return(
          <>
-        <Navbar title='Logn to IGP | Login In'/>
+        <Navbar title='Logn to IGP | Login In' success='true'/>
           <Logindata/>
        </>
 

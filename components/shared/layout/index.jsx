@@ -194,7 +194,7 @@ const menus = [
 
 
 
-const Layout = ({ children, title = "",description="" ,keywords=""}) => {
+const Layout = ({ children, title = "",description="" ,keywords="",success=''}) => {
   const [placeholder, setPlaceholder] = useState("Serech for gifts");
   const [open, setOpen] = useState(false);
 
